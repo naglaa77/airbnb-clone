@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import {Nunito} from "next/font/google";
-import {Navbar} from "@/app/components/navbar/navbar";
+import {Navbar} from "@/app/components/Navbar";
+import {KindeProvider} from "@kinde-oss/kinde-auth-nextjs";
+import Auth from "./auth";
 
 const font = Nunito({
   subsets: ["latin"]
@@ -18,11 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={font.className}>
-      <Navbar/>
-      {children}
-      </body>
-    </html>
+      <KindeProvider>
+        <html lang="en">
+          <body className={font.className}>
+          <Navbar/>
+          {children}
+          </body>
+        </html>
+      </KindeProvider>
   );
 }
