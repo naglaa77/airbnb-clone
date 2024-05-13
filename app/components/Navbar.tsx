@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DesktopLogo from "@/public/airbnb-desktop.png";
 import MobileLogo from "@/public/airbnb-mobile.webp";
-import UserNav from "@/app/components/UserNav";
+import {UserNav} from "@/app/components/UserNav";
 // import { UserNav } from "./UserNav";
 // import { SearchModalCompnent } from "./SearchComponent";
 
