@@ -10,11 +10,13 @@ import {MenuIcon} from "lucide-react";
 import {RegisterLink, LoginLink,LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
 import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
+import {createAirebnbHome} from "@/app/actions";
 
 export async function UserNav() {
     const {getUser} = getKindeServerSession()
     const user = await getUser();
 
+    const createHomewithId = user ? createAirebnbHome.bind(null, { userId: user.id }) : null;
     
     return (
         <DropdownMenu>
@@ -28,7 +30,7 @@ export async function UserNav() {
                 {user ?(
                    <>
                        <DropdownMenuItem>
-                          <form className="w-full">
+                          <form action={createHomewithId} className="w-full">
                               <button className="w-full text-start" type="submit">
                                     Airebnb your home
                               </button>
