@@ -10,13 +10,14 @@ import {MenuIcon} from "lucide-react";
 import {RegisterLink, LoginLink,LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
 import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
-import {createAirebnbHome} from "@/app/actions";
+import {createAirbnbHome} from "@/app/actions";
 
 export async function UserNav() {
     const {getUser} = getKindeServerSession()
     const user = await getUser();
-
-    const createHomewithId = user ? createAirebnbHome.bind(null, { userId: user.id }) : null;
+    const createHomewithId = createAirbnbHome.bind(null, {
+        userId: user?.id as string,
+    });
     
     return (
         <DropdownMenu>
