@@ -3,6 +3,7 @@
 import prisma from "@/app/lib/db";
 import {redirect} from "next/navigation";
 import {supabase} from "@/app/lib/supabase";
+import exp from "node:constants";
 
 export async function createAirbnbHome({userId} :{userId: string}) {
     const data = await prisma.home.findFirst({
@@ -80,5 +81,20 @@ export async function createDescription(formData:FormData) {
     })
 return redirect(`/create/${homeId}/address`)
 
+}
+
+export async function createLocation(formData:FormData) {
+    const countryValue = formData.get('countryValue') as string
+    const homeId = formData.get('homeId') as string
+    const data = await prisma.home.update({
+        where:{
+            id:homeId
+        },
+        data:{
+            country:countryValue,
+            addedLocation:true
+        }
+    })
+    return redirect("/")
 }
 

@@ -1,3 +1,5 @@
+'use client'
+
 import {
     Select,
     SelectContent,
@@ -8,10 +10,22 @@ import {
     SelectValue
 } from "@/components/ui/select";
 import {useCountries} from "@/app/lib/getCountries";
+import dynamic from "next/dynamic";
+import {Skeleton} from "@/components/ui/skeleton";
+import {CreationButtonBar} from "@/app/components/CreationButtonBar";
+import {useState} from "react";
+import {createLocation} from "@/app/actions";
 
 
 export default function AddressRoute ({params}:{params:{id:string}}) {
     const {getAllCountries,getCountryByValue} = useCountries()
+    const [locationValue, setLocationValue] = useState("")
+
+    //we should import it inside the function to avoid server side rendering
+    const LazyMap = dynamic(() => import('@/app/components/Map'),{
+        ssr: false,
+       loading:() =><Skeleton className="h-[50vh] w-full"/>
+    })
 
     return(
         <>
@@ -20,10 +34,12 @@ export default function AddressRoute ({params}:{params:{id:string}}) {
                     Where is your home located?
                 </h2>
             </div>
-            <form>
-                <div className="w-3/5 mx-auto">
+            <form action={createLocation}>
+                <input type="hidden" name="homeId" value={params.id}/>
+                <input type="hidden" name="countryValue" value={locationValue}/>
+                <div className="w-3/5 mx-auto mb-64">
                     <div className="mb-5">
-                        <Select required>
+                        <Select required onValueChange={(value) =>setLocationValue(value)}>
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Select a Country"/>
                             </SelectTrigger>
@@ -39,7 +55,9 @@ export default function AddressRoute ({params}:{params:{id:string}}) {
                             </SelectContent>
                         </Select>
                     </div>
+                    <LazyMap locationValue={locationValue}/>
                 </div>
+                <CreationButtonBar/>
             </form>
         </>
     )
