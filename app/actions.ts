@@ -28,6 +28,17 @@ export async function createAirbnbHome({userId} :{userId: string}) {
 
     }else if (data.addedcategory && !data.addedDescription ) {
         return redirect(`/create/${data.id}/description`)
+    } else if(data.addedDescription && data.addedcategory && !data.addedLocation)
+    {
+        return redirect(`/create/${data.id}/address`)
+    }else if(data.addedDescription && data.addedcategory && data.addedLocation){
+
+        const data = await prisma.home.create({
+            data: {
+                userId: userId
+            }
+        })
+        return redirect(`/create/${data.id}/structure`)
     }
 
 }
