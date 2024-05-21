@@ -70,9 +70,9 @@ export async function createDescription(formData:FormData) {
     const guestNumber = formData.get('guest') as string
     const roomNumber = formData.get('room') as string
     const bathroomNumber = formData.get('bathroom') as string
-    const {data:imageData} =await supabase.storage.from('images').upload(`${imageFile.name}-${new Date()}`, imageFile,{
+    const {data:imageData} =await supabase.storage.from('images').upload(`${imageFile.name}`, imageFile,{
         cacheControl: '2592000', // cash control for one year
-        contentType: "image/png"
+         contentType: imageFile.type
     })
 
     const data = await prisma.home.update({

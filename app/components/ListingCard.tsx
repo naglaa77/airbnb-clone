@@ -16,7 +16,7 @@ export function ListingCard({imagePath,description,location,price }:IAppProps) {
     return(
         <div className='flex flex-col'>
             <div className="relative h-72">
-                <Image src="" alt="image of house" fill className="rounded-lg h-full object-cover"/>
+                <Image src={`https://xqooydltswhpbypguomo.supabase.co/storage/v1/object/public/images/${imagePath}`} alt="image of house" fill className="rounded-lg h-full object-cover"/>
             </div>
             <Link href="/" className="mt-2">
                 <h3 className="font-medium text-base">
