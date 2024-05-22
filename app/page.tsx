@@ -5,23 +5,45 @@ import {it} from "node:test";
 import {Suspense} from "react";
 import {SkeletonCard} from "@/app/components/SkeletonCard";
 import {NoItems} from "@/app/components/NoItems";
+import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
 
-async function getData({searchParams}:{searchParams?: {filter?: string}}) {
+async function getData({
+    searchParams,
+    userId,
+}: {
+    userId: string | undefined;
+    searchParams?: {
+        filter?: string;
+        country?: string;
+        guest?: string;
+        room?: string;
+        bathroom?: string;
+    };
+}) {
     const data = await prisma.home.findMany({
-        where:{
+        where: {
             addedcategory: true,
-            addedDescription: true,
             addedLocation: true,
-            categoryName:searchParams?.filter ?? undefined
+            addedDescription: true,
+            categoryName: searchParams?.filter ?? undefined,
+            country: searchParams?.country ?? undefined,
+            guests: searchParams?.guest ?? undefined,
+            bedrooms: searchParams?.room ?? undefined,
+            bathrooms: searchParams?.bathroom ?? undefined,
         },
-        select:{
-            id: true,
+        select: {
             photo: true,
-            description: true,
+            id: true,
             price: true,
+            description: true,
             country: true,
-        }
-    })
+            Favorite: {
+                where: {
+                    userId: userId ?? undefined,
+                },
+            },
+        },
+    });
     return data
 }
 
@@ -33,17 +55,19 @@ export default function Home({
     <div className="container mx-auto px-5 lg:px-10">
       <MapFilterItems/>
         <Suspense key={searchParams?.filter} fallback={<SkeletonLoading/>}>
-            <ShowItems searchParams={searchParams}/>
+            <ShowItems searchParams={searchParams} />
         </Suspense>
     </div>
   );
 }
 
 
-async function ShowItems({
-    searchParams
-}:{searchParams?: {filter?: string}}) {
-    const data = await getData({searchParams})
+async function ShowItems({searchParams,userId}:{searchParams?: {filter?: string},userId:string | undefined}) {
+
+    const {getUser} = getKindeServerSession()
+    const user = await getUser()
+
+    const data = await getData({searchParams,userId: user?.id})
     return (
         <>
             {data.length === 0 ?(
@@ -56,6 +80,11 @@ async function ShowItems({
                                      imagePath={item.photo as string}
                                      location={item.country as string}
                                      price={item.price as number}
+                                     userId={user?.id}
+                                     favoriteId={item.Favorite[0]?.id}
+                                      isInFavoriteList={item.Favorite.length > 0 ? true : false}
+                                      homeId={item.id}
+                                     pathName="/"
                         />
                     ))}
                 </div>
