@@ -71,7 +71,7 @@ async function ShowItems({searchParams,userId}:{searchParams?: {filter?: string}
     return (
         <>
             {data.length === 0 ?(
-                <NoItems/>
+                <NoItems description="Please check a other category or creating your own listing!" title="Sorry no listings found for this category..."/>
             ) : (
                 <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8">
                     {data.map((item) => (
