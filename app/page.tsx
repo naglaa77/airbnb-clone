@@ -51,6 +51,7 @@ async function getData({
 export default function Home({
     searchParams
 }:{searchParams?: {filter?: string}}) {
+
   return (
     <div className="container mx-auto px-5 lg:px-10">
       <MapFilterItems/>
