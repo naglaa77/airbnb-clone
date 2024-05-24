@@ -2,7 +2,7 @@
 
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import {DateRange, DateRangePicker, Calendar, DefinedRange} from 'react-date-range';
+import {DateRange} from 'react-date-range';
 import {useState} from "react";
 
 export function SelectCalender() {
@@ -15,14 +15,22 @@ export function SelectCalender() {
   }])
   
   return (
-    <DateRange
-        date={new Date()}
-        showDateDisplay={false}
-        rangeColors={["#FF5A5F"]}
-        ranges={state}
-        onChange={(item) => setState([item.selection] as any)}
-        minDate={new Date()}
-        direction={"vertical"}
-    />
+      <>
+        <input type="hidden"
+               name="startDate"
+               value={state[0].startDate.toISOString()}/>
+        <input type="hidden"
+               name="endDate"
+               value={state[0].endDate.toISOString()}/>
+        <DateRange
+            date={new Date()}
+            showDateDisplay={false}
+            rangeColors={["#FF5A5F"]}
+            ranges={state}
+            onChange={(item) => setState([item.selection] as any)}
+            minDate={new Date()}
+            direction={"vertical"}
+        />
+      </>
   )
 }

@@ -5,6 +5,10 @@ import {Separator} from "@/components/ui/separator";
 import {CategoryShowcase} from "@/app/components/CategoryShowcase";
 import {HomeMap} from "@/app/components/HomeMap";
 import {SelectCalender} from "@/components/SelectCalender";
+import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
+import {Button} from "@/components/ui/button";
+import Link from "next/link";
+import {createReservation} from "@/app/actions";
 
 async function getData(homeId: string) {
     const data = await prisma.home.findUnique({
@@ -36,6 +40,10 @@ export default async function HomeRoute({params}:{params:{id:string}}) {
     const data = await getData(params.id)
     const {getCountryByValue} = useCountries()
     const country = getCountryByValue(data?.country as string)
+
+   const{getUser}= getKindeServerSession()
+    const user = await getUser()
+
     return (
         <div className="w-[75%] mx-auto mt-10 mb-12">
             <h1 className="text-2xl font-medium mb-5">{data?.title}</h1>
@@ -67,7 +75,28 @@ export default async function HomeRoute({params}:{params:{id:string}}) {
                     <Separator className="my-7"/>
                     <HomeMap locationValue={data?.country as string}/>
                 </div>
-                <SelectCalender/>
+                <form action={createReservation}>
+                    <input type="hidden"
+                           name="homeId"
+                           value={params.id}
+                    />
+                    <input type="hidden"
+                           name="userId"
+                           value={user?.id}
+                    />
+                    <SelectCalender/>
+                    {user?.id ? (
+                        <Button type="submit" className="w-full">
+                            Make a reservation
+                        </Button>
+                    ) : (
+                        <Button className="w-full" asChild>
+                            <Link href="/api/auth/login">
+                              Make a reservation
+                            </Link>
+                        </Button>
+                    )}
+                </form>
             </div>
         </div>
     )
