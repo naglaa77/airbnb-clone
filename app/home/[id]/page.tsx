@@ -2,6 +2,9 @@ import prisma from "@/app/lib/db";
 import Image from "next/image";
 import {useCountries} from "@/app/lib/getCountries";
 import {Separator} from "@/components/ui/separator";
+import {CategoryShowcase} from "@/app/components/CategoryShowcase";
+import {HomeMap} from "@/app/components/HomeMap";
+import {SelectCalender} from "@/components/SelectCalender";
 
 async function getData(homeId: string) {
     const data = await prisma.home.findUnique({
@@ -34,7 +37,7 @@ export default async function HomeRoute({params}:{params:{id:string}}) {
     const {getCountryByValue} = useCountries()
     const country = getCountryByValue(data?.country as string)
     return (
-        <div className="w-[75%] mx-auto mt-10">
+        <div className="w-[75%] mx-auto mt-10 mb-12">
             <h1 className="text-2xl font-medium mb-5">{data?.title}</h1>
             <div className="relative h-[550px]">
                 <Image
@@ -58,7 +61,13 @@ export default async function HomeRoute({params}:{params:{id:string}}) {
                         </div>
                     </div>
                        <Separator className="my-7"/>
+                    <CategoryShowcase categoryName={data?.categoryName as string}   />
+                    <Separator className="my-7"/>
+                    <p className="text-muted-foreground">{data?.description}</p>
+                    <Separator className="my-7"/>
+                    <HomeMap locationValue={data?.country as string}/>
                 </div>
+                <SelectCalender/>
             </div>
         </div>
     )
