@@ -22,7 +22,7 @@ async function getData({
         bathroom?: string;
     };
 }) {
-    noStore()
+
     const data = await prisma.home.findMany({
         where: {
             addedcategory: true,

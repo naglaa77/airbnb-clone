@@ -6,7 +6,7 @@ import {unstable_noStore as noStore} from "next/cache";
 
 export async function GET() {
 
-    noStore()
+
     const {getUser} = getKindeServerSession()
     const user = await getUser()
 

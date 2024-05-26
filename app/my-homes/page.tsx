@@ -7,7 +7,7 @@ import {unstable_noStore as noStore} from "next/cache";
 
 
 async function getData(userId: string) {
-    noStore()
+
     const data = await prisma.home.findMany({
         where:{
             userId: userId,
