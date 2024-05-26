@@ -16,6 +16,7 @@ import {unstable_noStore as noStore} from "next/cache";
 
 async function getData(homeId: string) {
 
+
     const data = await prisma.home.findUnique({
         where: {
             id: homeId
@@ -72,8 +73,7 @@ export default async function HomeRoute({params}:{params:{id:string}}) {
                         <p>{data?.guests} Guests</p> * <p>{data?.bedrooms} Badrooms</p> * <p>{data?.bathrooms} Bathroom</p>
                     </div>
                     <div className="flex items-center mt-6">
-                        <img src={data?.User?.profileImage ?? "./placeholder.jpg"} alt="user Profil" className="w-11 h-11 rounded-full"/>
-                        <div className="flex flex-col ml-4">
+                        <Image src={data?.User?.profileImage ?? "/placeholder.jpg"} alt="user Profil" width={44} height={44} className="rounded-full"/>                        <div className="flex flex-col ml-4">
                             <h3 className="font-medium">Hosted By {data?.User?.firstName}</h3>
                             <p className="text-sm text-muted-foreground">Host since 2013</p>
                         </div>

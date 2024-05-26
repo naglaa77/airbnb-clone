@@ -50,7 +50,7 @@ export function SearchModalComponent() {
     return(
         <Dialog>
           <DialogTrigger asChild>
-              <div className="rounded-full py-2 px-5 flex border items-center cursor-pointer">
+              <div role="button" aria-label="Open dialog" className="rounded-full py-2 px-5 flex border items-center cursor-pointer">
                   <div className="flex h-full divide-x font-medium">
                       <p className="px-4">AnyWhere</p>
                       <p className="px-4">Any Week</p>

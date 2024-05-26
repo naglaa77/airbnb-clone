@@ -11,6 +11,7 @@ import {RegisterLink, LoginLink,LogoutLink} from "@kinde-oss/kinde-auth-nextjs/c
 import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
 import {createAirbnbHome} from "@/app/actions";
+import Image from "next/image";
 
 export async function UserNav() {
     const {getUser} = getKindeServerSession()
@@ -22,9 +23,16 @@ export async function UserNav() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <div className="rounded-full border px-2 py-2 lg:px-4 lg:py-2 flex items-center gap-x-3 cursor-pointer">
+                <div role="button" aria-label="Open dropdown menu" className="rounded-full border px-2 py-2 lg:px-4 lg:py-2 flex items-center gap-x-3 cursor-pointer">
                    <MenuIcon className="w-6 h-6 lg:w-5 lg:h-5"/>
-                    <img src={user?.picture ?? "./placeholder.jpg"} alt="user image" className="w-8 h-8 rounded-full hidden lg:block"/>
+                    {/*<img src={user?.picture ?? "./placeholder.jpg"} alt="user image" className="w-8 h-8 rounded-full hidden lg:block"/>*/}
+                    <Image
+                        src={user?.picture ?? "/placeholder.jpg"}
+                        alt="user image"
+                        className="w-8 h-8 rounded-full hidden lg:block"
+                        width={8} // replace with the actual width
+                        height={8} // replace with the actual height
+                    />
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[200px]">
