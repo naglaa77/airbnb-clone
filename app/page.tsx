@@ -1,11 +1,13 @@
 import {MapFilterItems} from "@/app/components/MapFilterItems";
 import prisma from "@/app/lib/db";
 import {ListingCard} from "@/app/components/ListingCard";
-import {it} from "node:test";
 import {Suspense} from "react";
 import {SkeletonCard} from "@/app/components/SkeletonCard";
 import {NoItems} from "@/app/components/NoItems";
 import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
+import {unstable_noStore as noStore} from "next/cache";
+
+
 
 async function getData({
     searchParams,
@@ -20,6 +22,7 @@ async function getData({
         bathroom?: string;
     };
 }) {
+    noStore()
     const data = await prisma.home.findMany({
         where: {
             addedcategory: true,
