@@ -32,6 +32,6 @@ export async function GET() {
         })
     }
 
-    return NextResponse.redirect(process.env.PATH_AFTER_LOGIN as string, {status: 302})
+    return NextResponse.redirect("https://airbnb-clone-six-topaz.vercel.app")
 
 }

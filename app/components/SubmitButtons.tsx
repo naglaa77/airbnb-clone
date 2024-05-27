@@ -27,11 +27,11 @@ export function AddToFavoriteButton() {
     return (
         <>
             {pending ? (
-                <Button variant="outline" size="icon" className="bg-primary-foreground" disabled>
+                <Button variant="outline" size="icon" className="bg-primary-foreground" disabled aria-label="loading">
                     <Loader2 className="w-4 h-4 animate-spin text-primary"/>
                 </Button>
             ) : (
-                <Button variant="outline" size="icon" className="bg-primary-foreground" type="submit">
+                <Button variant="outline" size="icon" className="bg-primary-foreground" type="submit" aria-label="add to favorite">
                     <Heart className="w-4 h-4"/>
                 </Button>
             )}
