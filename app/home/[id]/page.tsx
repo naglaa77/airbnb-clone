@@ -56,7 +56,7 @@ export default async function HomeRoute({params}:{params:{id:string}}) {
     const user = await getUser()
 
     return (
-        <div className="w-[75%] mx-auto mt-10 mb-12">
+        <div className="w-full px-4 lg:px-0 lg:w-[75%] mx-auto mt-10 mb-12">
             <h1 className="text-2xl font-medium mb-5">{data?.title}</h1>
             <div className="relative h-[550px]">
                 <Image
@@ -66,8 +66,8 @@ export default async function HomeRoute({params}:{params:{id:string}}) {
                     className="rounded-lg h-full object-cover w-full"
                 />
             </div>
-            <div className="flex justify-between gap-x-24 mt-8">
-                <div className="w-2/3">
+            <div className="flex flex-col lg:flex-row justify-between gap-x-24 mt-8">
+                <div className="w-full lg:w-2/3">
                     <h3 className="text-xl font-medium">{country?.flag} {country?.label} / {country?.region}</h3>
                     <div className="flex gap-x-2 text-muted-foreground">
                         <p>{data?.guests} Guests</p> * <p>{data?.bedrooms} Badrooms</p> * <p>{data?.bathrooms} Bathroom</p>
@@ -85,7 +85,7 @@ export default async function HomeRoute({params}:{params:{id:string}}) {
                     <Separator className="my-7"/>
                     <HomeMap locationValue={data?.country as string}/>
                 </div>
-                <form action={createReservation}>
+                <form action={createReservation} className="mt-8 lg:mt-0 text-center">
                     <input type="hidden"
                            name="homeId"
                            value={params.id}
@@ -98,7 +98,7 @@ export default async function HomeRoute({params}:{params:{id:string}}) {
                     {user?.id ? (
                        <ReservationSubmitButton/>
                     ) : (
-                        <Button className="w-full" asChild>
+                        <Button className="w-[50%] lg:w-full" asChild>
                             <Link href="/api/auth/login">
                               Make a reservation
                             </Link>
