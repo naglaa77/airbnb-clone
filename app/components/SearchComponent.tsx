@@ -50,13 +50,13 @@ export function SearchModalComponent() {
     return(
         <Dialog>
           <DialogTrigger asChild>
-              <div role="button" aria-label="Open dialog" className="rounded-full py-2 px-5 flex border items-center cursor-pointer">
-                  <div className="flex h-full divide-x font-medium">
-                      <p className="px-4">AnyWhere</p>
+              <div role="button" aria-label="Open dialog" className="rounded-full pr-4 md:pr-0 mr-4 md:mr-0 py-2 md:px-5 flex  border items-center cursor-pointer">
+                  <div className="flex text-sm h-full divide-x font-medium">
+                      <p className="px-4">Any Where</p>
                       <p className="px-4">Any Week</p>
                       <p className="px-4">Add Guests</p>
                   </div>
-                  <Search className="bg-primary text-white p-1 h-8 w-8 rounded-full"/>
+                  <Search className="bg-primary text-white px-1 h-8 w-8 rounded-full"/>
               </div>
           </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">

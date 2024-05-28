@@ -11,14 +11,14 @@ export default function DescriptionPage ({params}:{params:{id:string}}) {
 
     return (
         <>
-            <div className="w-3/5 mx-auto">
+            <div className="w-full md:w-3/5 px-4 md:px-0 mx-auto">
                 <h2 className="text-3xl font-semibold tracking-tight transition-colors">
                     Please describe your home as good as you can!
                 </h2>
             </div>
             <form action={createDescription}>
                 <input type="hidden" name="homeId" value={params.id}/>
-                <div className="w-3/5 mx-auto mt-10 flex flex-col gap-y-5 mb-36">
+                <div className="w-full md:w-3/5 px-4 md:px-0 mx-auto mt-10 flex flex-col gap-y-5 mb-36">
                     <div className="flex flex-col gap-y-2">
                         <Label>Title</Label>
                         <Input name="title"

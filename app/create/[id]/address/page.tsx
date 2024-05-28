@@ -29,7 +29,7 @@ export default function AddressRoute ({params}:{params:{id:string}}) {
 
     return(
         <>
-            <div className="w-3/5 mx-auto">
+            <div className="w-full md:w-3/5 px-4 md:px-0 mx-auto">
                 <h2 className="text-3xl font-semibold tracking-tight transition-colors">
                     Where is your home located?
                 </h2>
@@ -37,7 +37,7 @@ export default function AddressRoute ({params}:{params:{id:string}}) {
             <form action={createLocation}>
                 <input type="hidden" name="homeId" value={params.id}/>
                 <input type="hidden" name="countryValue" value={locationValue}/>
-                <div className="w-3/5 mx-auto mb-64">
+                <div className="w-full md:w-3/5 px-4 md:px-0 mt-8 mx-auto mb-64">
                     <div className="mb-5">
                         <Select required onValueChange={(value) =>setLocationValue(value)}>
                             <SelectTrigger className="w-full">
