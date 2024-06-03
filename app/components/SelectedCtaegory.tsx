@@ -3,7 +3,6 @@
 import {categoryItems} from "@/app/lib/categoryItems";
 import {Card, CardHeader} from "@/components/ui/card";
 import Image from "next/image";
-import {it} from "node:test";
 import {useState} from "react";
 
 export function SelectedCategory() {

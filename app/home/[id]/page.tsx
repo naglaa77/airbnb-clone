@@ -15,7 +15,7 @@ import {unstable_noStore as noStore} from "next/cache";
 
 
 async function getData(homeId: string) {
-
+    noStore()
 
     const data = await prisma.home.findUnique({
         where: {
