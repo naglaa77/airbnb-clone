@@ -8,7 +8,7 @@ export function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4  justify-between items-center">
                     <div className="flex md:gap-x-1 items-center text-base">
                         <p className="text-gray-500">© 2024 Pyrocode.</p>
-                        <p className="text-gray-500">Airebnb clone by <span className="text-primary font-medium italic">Naglaa Fouz</span></p>
+                        <p className="text-gray-500">Airebnb clone by <a href="https://new-pyrocode.vercel.app"><span className="text-primary font-medium italic">Naglaa Fouz</span></a></p>
                     </div>
                     <div className="flex flex-col  md:flex-row md:justify-self-end gap-3 md:space-y-0">
                         <div className="flex md:flex-row items-center gap-x-1">
