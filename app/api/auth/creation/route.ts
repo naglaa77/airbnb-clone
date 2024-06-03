@@ -32,6 +32,6 @@ export async function GET() {
         })
     }
 
-    return NextResponse.redirect("https://airbnb-clone-six-topaz.vercel.app")
+    return NextResponse.redirect("https://heberge-pyrocode.vercel.app")
 
 }
