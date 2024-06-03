@@ -24,7 +24,7 @@ This project is a clone of Airbnb, built using Next.js, React, Tailwind CSS, and
 
 ## Demo
 
-Check out the live demo [here](#).
+Check out the live demo [https://bnb-pyrocode.vercel.app](#).
 
 ## Installation
 
@@ -98,8 +98,8 @@ Contributions are what make the open-source community such an amazing place to l
 
 ### Contact
 My Email - naglaafouz4@gmail.com
-
-Project Link: https://bnb-pyrocode.vercel.app
+My LinkedIn - [Naglaa Fouz](https://www.linkedin.com/in/naglaa-fouz-7b42a214a/)
+My Portfolio - [Naglaa Fouz](https://new-pyrocode.vercel.app/)
 
 
 
