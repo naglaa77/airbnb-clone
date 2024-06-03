@@ -96,14 +96,10 @@ Contributions are what make the open-source community such an amazing place to l
 4. Push to the Branch (git push origin feature/AmazingFeature)
 5. Open a Pull Request
 
-
-### License
-Distributed under the MIT License. See LICENSE for more information.
-
 ### Contact
-Your Name - naglaafouz4@gmail.com
+My Email - naglaafouz4@gmail.com
 
-Project Link: https://github.com/naglaa77/airbnb-clone
+Project Link: https://bnb-pyrocode.vercel.app
 
 
 
