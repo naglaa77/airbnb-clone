@@ -96,7 +96,7 @@ Contributions are what make the open-source community such an amazing place to l
 My Email - naglaafouz4@gmail.com
 My LinkedIn - [Naglaa Fouz](https://www.linkedin.com/in/naglaa-fouz-7b42a214a/)
 My Portfolio - [Naglaa Fouz](https://new-pyrocode.vercel.app/)
-live Project - [Naglaa Fouz](https://heberge-pyrocode.vercel.app)
+live Project - [Project_Live](https://heberge-pyrocode.vercel.app)
 
 
 
