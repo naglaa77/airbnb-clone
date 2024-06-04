@@ -22,10 +22,6 @@ This project is a clone of Airbnb, built using Next.js, React, Tailwind CSS, and
 - User Profiles
 - Interactive Maps with Leaflet
 
-## Demo
-
-Check out the live demo [https://bnb-pyrocode.vercel.app](#)
-
 ## Installation
 
 To get a local copy up and running, follow these steps:
@@ -100,6 +96,7 @@ Contributions are what make the open-source community such an amazing place to l
 My Email - naglaafouz4@gmail.com
 My LinkedIn - [Naglaa Fouz](https://www.linkedin.com/in/naglaa-fouz-7b42a214a/)
 My Portfolio - [Naglaa Fouz](https://new-pyrocode.vercel.app/)
+live Project - [Naglaa Fouz](https://heberge-pyrocode.vercel.app)
 
 
 
