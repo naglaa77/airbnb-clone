@@ -3,7 +3,7 @@ import {Code, Linkedin, Mail} from "lucide-react";
 
 export function Footer() {
     return(
-        <footer className="border border-t-1 mt-7">
+        <footer className="border border-t-1">
             <div className="container mx-auto px-5 lg:px-10 py-5 w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4  justify-between items-center">
                     <div className="flex md:gap-x-1 items-center text-base">
